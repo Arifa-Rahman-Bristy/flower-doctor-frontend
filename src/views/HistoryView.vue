@@ -60,12 +60,12 @@
       </button>
     </div>
 
-    <!-- Bottom Nav -->
+    <!-- Bottom Nav (Localized to Bangla) -->
     <div class="bottom-nav">
-      <div class="nav-item" @click="$router.push('/home')"><i class="fa-solid fa-house"></i><span>Home</span></div>
-      <div class="nav-item active"><i class="fa-regular fa-clock"></i><span>History</span></div>
-      <div class="nav-item cam-btn" @click="$router.push('/detect')"><div class="big-cam-circle"><i class="fa-solid fa-camera"></i></div><span>Camera</span></div>
-      <div class="nav-item" @click="$router.push('/profile')"><i class="fa-solid fa-ellipsis"></i><span>More</span></div>
+      <div class="nav-item" @click="$router.push('/home')"><i class="fa-solid fa-house"></i><span>হোম</span></div>
+      <div class="nav-item active"><i class="fa-regular fa-clock"></i><span>ইতিহাস</span></div>
+      <div class="nav-item cam-btn" @click="$router.push('/detect')"><div class="big-cam-circle"><i class="fa-solid fa-camera"></i></div><span>স্ক্যান</span></div>
+      <div class="nav-item" @click="$router.push('/profile')"><i class="fa-solid fa-ellipsis"></i><span>আরও</span></div>
     </div>
   </div>
 </template>
@@ -76,10 +76,10 @@ import { ref, computed } from 'vue'
 const activeTab = ref('all')
 
 const historyList = ref([
-  { id: 1, type: 'disease', title: 'Rose (গোলাপ)', date: '10 Aug 2026', match: '96%', status: 'Black Spot', statusColor: 'color: #dc2626;', img: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=150', link: '/result' },
-  { id: 2, type: 'flower', title: 'Marigold (গাদা)', date: '8 Aug 2026', match: '93%', status: 'Healthy', statusColor: 'color: #16a34a;', img: 'https://images.unsplash.com/photo-1606041008023-472dfb5e530f?q=80&w=150', link: '/classification' },
-  { id: 3, type: 'flower', title: 'Gerbera (গেরবেরা)', date: '5 Aug 2026', match: '90%', status: 'Healthy', statusColor: 'color: #16a34a;', img: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=150', link: '/classification' },
-  { id: 4, type: 'disease', title: 'Tuberose (রজনীগন্ধা)', date: '2 Aug 2026', match: '88%', status: 'Powdery Mildew', statusColor: 'color: #dc2626;', img: 'https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=150', link: '/treatment' }
+  { id: 1, type: 'disease', title: 'গোলাপ (Rose)', date: '১০ আগস্ট ২০২৬', match: '৯৬%', status: 'ব্ল্যাক স্পট', statusColor: 'color: #dc2626;', img: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=150', link: '/result' },
+  { id: 2, type: 'flower', title: 'গাঁদা (Marigold)', date: '৮ আগস্ট ২০২৬', match: '৯৩%', status: 'সুস্থ', statusColor: 'color: #16a34a;', img: 'https://images.unsplash.com/photo-1606041008023-472dfb5e530f?q=80&w=150', link: '/classification' },
+  { id: 3, type: 'flower', title: 'গেরবেরা (Gerbera)', date: '৫ আগস্ট ২০২৬', match: '৯০%', status: 'সুস্থ', statusColor: 'color: #16a34a;', img: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=150', link: '/classification' },
+  { id: 4, type: 'disease', title: 'রজনীগন্ধা (Tuberose)', date: '২ আগস্ট ২০২৬', match: '৮৮%', status: 'পাউডারি মিলডিউ', statusColor: 'color: #dc2626;', img: 'https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=150', link: '/treatment' }
 ])
 
 const filteredHistory = computed(() => {

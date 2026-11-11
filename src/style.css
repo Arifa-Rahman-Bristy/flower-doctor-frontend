@@ -35,6 +35,7 @@ body {
   font-size: 14px;
   margin: 0;
   color: #0f172a;
+  font-weight: 800;
 }
 
 .back-btn {
@@ -52,6 +53,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding-bottom: 75px; /* যাতে নিচের কন্টেন্ট বটম বারের নিচে ঢাকা না পড়ে */
 }
 
 .btn-main {
@@ -67,44 +69,78 @@ body {
   margin-top: auto;
 }
 
+/* Modern Floating Bottom Navigation Bar */
 .bottom-nav {
-  background: #ffffff;
-  border-top: 1px solid #e2e8f0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid #f1f5f9;
   display: flex;
   justify-content: space-around;
-  padding: 6px 0;
-  align-items: flex-end;
+  align-items: center;
+  padding: 8px 12px 14px 12px;
+  box-shadow: 0 -10px 25px -5px rgba(0, 0, 0, 0.05);
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
+  z-index: 100;
 }
 
 .nav-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 9px;
-  color: #64748b;
+  gap: 4px;
   cursor: pointer;
-}
-
-.nav-item.active {
-  color: #14532d;
-  font-weight: bold;
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 700;
+  transition: all 0.2s ease;
 }
 
 .nav-item i {
-  font-size: 15px;
-  margin-bottom: 2px;
+  font-size: 16px;
+  transition: transform 0.2s ease;
 }
 
-.big-cam-circle {
-  background: #14532d;
-  color: #ffffff;
-  width: 34px;
-  height: 34px;
+.nav-item.active {
+  color: #16a34a;
+}
+
+.nav-item.active i {
+  transform: scale(1.1);
+}
+
+/* Floating Center Camera Button */
+.nav-item.cam-btn {
+  position: relative;
+}
+
+.nav-item.cam-btn .big-cam-circle {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #16a34a 0%, #10b981 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2px;
+  color: #ffffff;
+  box-shadow: 0 6px 15px rgba(16, 185, 129, 0.4);
+  margin-top: -22px;
+  border: 4px solid #ffffff;
+  transition: transform 0.2s ease;
+}
+
+.nav-item.cam-btn .big-cam-circle:hover {
+  transform: scale(1.05);
+}
+
+.nav-item.cam-btn span {
+  margin-top: 2px;
+  color: #16a34a;
+  font-weight: 800;
 }
 
 /* Common Card & List Styles */

@@ -6,10 +6,12 @@
       
       <!-- Top Camera Controls -->
       <div style="padding: 40px 16px 10px; display: flex; justify-content: space-between; align-items: center; z-index: 5;">
-        <button style="background: rgba(255,255,255,0.2); border: none; color: #fff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+        <!-- Working Flash Button -->
+        <button @click="toggleFlash" :style="flashOn ? 'background: #eab308; color: #fff;' : 'background: rgba(255,255,255,0.2); color: #fff;'" style="border: none; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s;">
           <i class="fa-solid fa-bolt" style="font-size: 13px;"></i>
         </button>
-        <button style="background: rgba(255,255,255,0.2); border: none; color: #fff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+        <!-- Working Settings Button -->
+        <button @click="openSettings" style="background: rgba(255,255,255,0.2); border: none; color: #fff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;">
           <i class="fa-solid fa-gear" style="font-size: 13px;"></i>
         </button>
       </div>
@@ -65,7 +67,7 @@
       <!-- Hidden Input for Gallery Upload -->
       <input type="file" ref="fileInput" accept="image/*" style="display: none;" @change="onFileSelected" />
 
-      <!-- LOW QUALITY WARNING POPUP (Mockup 12) -->
+      <!-- LOW QUALITY WARNING POPUP -->
       <div v-if="showWarningModal" style="position: absolute; inset: 0; background: rgba(0,0,0,0.65); z-index: 20; display: flex; align-items: flex-end; justify-content: center;">
         <div style="background: #ffffff; width: 100%; border-radius: 24px 24px 0 0; padding: 20px 20px 30px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; box-shadow: 0 -10px 25px rgba(0,0,0,0.3); animation: slideUp 0.3s ease-out;">
           
@@ -76,7 +78,7 @@
 
           <h3 style="margin: 0; font-size: 16px; font-weight: 800; color: #0f172a;">ছবির মান ভালো না</h3>
           <p style="margin: 0; font-size: 11px; color: #475569; font-weight: 600; line-height: 1.4;">
-            ছবিটি ঝাপসা বা অন্ধকার।<br>অনুগ্ৰহ করে আরও পরিষ্কার ছবি তুলুন।
+            ছবিটি ঝাপসা বা অন্ধকার。<br>অনুগ্ৰহ করে আরও পরিষ্কার ছবি তুলুন।
           </p>
 
           <!-- Instructions Checklist -->
@@ -107,8 +109,17 @@ const videoRef = ref(null)
 const fileInput = ref(null)
 const capturedImg = ref(null)
 const showWarningModal = ref(false)
-const simulatedLowQuality = ref(false) // Toggle low quality test
+const simulatedLowQuality = ref(false)
+const flashOn = ref(false)
 let stream = null
+
+const toggleFlash = () => {
+  flashOn.value = !flashOn.value
+}
+
+const openSettings = () => {
+  alert("ক্যামেরা সেটিংস এবং রেজোলিউশন কনফিগারেশন এখানে আসবে।")
+}
 
 const startCamera = async () => {
   try {
@@ -151,11 +162,9 @@ const takePhoto = () => {
     ctx.drawImage(videoRef.value, 0, 0, canvas.width, canvas.height)
     capturedImg.value = canvas.toDataURL('image/png')
   } else {
-    // Default sample image if camera not accessible
     capturedImg.value = 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=500&auto=format&fit=crop'
   }
 
-  // Check Quality Condition
   if (simulatedLowQuality.value) {
     showWarningModal.value = true
   } else {

@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-// All 17 Views Import
+// All Views Import
 import SplashView from '../views/SplashView.vue'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
@@ -17,6 +17,8 @@ import HeatmapView from '../views/HeatmapView.vue'
 import MarketView from '../views/MarketView.vue'
 import WeatherView from '../views/WeatherView.vue'
 import OfflineView from '../views/OfflineView.vue'
+import AiDoctorView from '../views/AiDoctorView.vue'
+import DatasetView from '../views/DatasetView.vue'
 
 const routes = [
   { path: '/', component: SplashView },                           // 1. Splash
@@ -34,7 +36,9 @@ const routes = [
   { path: '/heatmap', component: HeatmapView },                   // 14. Explainable AI Heatmap
   { path: '/market', component: MarketView },                     // 15. Market Price Prediction
   { path: '/weather', component: WeatherView },                   // 16. Weather & Environment
-  { path: '/offline', component: OfflineView }                    // 17. Offline Mode
+  { path: '/offline', component: OfflineView },                   // 17. Offline Mode
+  { path: '/assistant', component: AiDoctorView },                // 18. AI Voice & Text Assistant
+  { path: '/datasets', component: DatasetView }                   // 19. Dataset Information
 ]
 
 const router = createRouter({
